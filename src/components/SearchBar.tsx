@@ -1,14 +1,34 @@
 import React, { useState } from "react";
-
-import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
 
-export const SearchBar = () => {
-    const [input, setInput] = useState("")
+type SearchBarProps = {
+    onSearch: (searchTerm: string) => void;
+};
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleSearch = () => {
+        onSearch(searchTerm);
+    };
+
     return (
-        <div className="input-wrapper">
-            <FaSearch id="search-icon" />
-            <input placeholder="Type to search a city" value={input} onChange={(e) => setInput(e.target.value)} />
+        <div className="SearchBar-container">
+            <input
+                className="SearchBar-input"
+                type="text"
+                value={searchTerm}
+                onChange={handleInputChange}
+            />
+            <button className="SearchBar-button" onClick={handleSearch}>
+                Search
+            </button>
         </div>
-    )
-}
+    );
+};
+
+export default SearchBar;

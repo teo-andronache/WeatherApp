@@ -1,4 +1,33 @@
-.input-wrapper {
-    background-color: white;
+.SearchBar-container {
+    position: fixed;
+    top: 10px;
+    left: 0;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.SearchBar-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.SearchBar-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #00ffa2;
+    color: #000000;
+    border: blue;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.SearchBar-button:hover {
+    background-color: #2ab300;
 }
