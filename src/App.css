@@ -23,11 +23,15 @@ body {
 
 .result-name {
   font-weight: bold;
+  align-items: center;
+}
+
+.result-localtime {
+  align-items: center;
 }
 
 .result-temperature {
   margin-top: 2rem;
-
 }
 
 .result-condition {
@@ -36,7 +40,7 @@ body {
 }
 
 .sun-icon {
-  animation: rotate 3s linear infinite;
+  animation: rotate 5s linear infinite;
   transform-origin: center;
   margin-left: 1rem;
   margin-top: auto;
