@@ -3,6 +3,7 @@ import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy } from 'r
 import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
+import SimpleSwitchButton from './components/SwitchButton';
 
 
 type WeatherData = {
@@ -114,8 +115,11 @@ function App() {
       };
 
       setSearchResults([searchResult]);
+
+
     } catch (error) {
       console.error("Error fetching weather data:", error);
+
       // Handle the error (e.g., show an error message)
     }
   };
@@ -124,6 +128,7 @@ function App() {
     <div className='App'>
       <div className='search-bar-container'>
         <SearchBar onSearch={handleSearch} />
+        <SimpleSwitchButton />
       </div>
       <video src={videoBackground} autoPlay loop muted />
       <div className='search-results-container'>
