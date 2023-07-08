@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BsFillSunFill } from 'react-icons/bs';
+import { ImSun, ImCloud, ImRain } from 'react-icons/im';
 import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
@@ -109,9 +109,9 @@ function App() {
           <div key={index} className='search-result'>
             <div className='result-name'>{result.name}</div>
             <div className='result-temperature'>{result.temperature}°C</div>
-            <div className='result-condition'>{result.condition}</div>
-            <div className='sun'>
-              <BsFillSunFill className='sun-icon' />
+            <div className='result-condition'>
+              {result.condition}
+              <ImSun className='sun-icon' />
             </div>
           </div>
         ))}
