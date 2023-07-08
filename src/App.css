@@ -30,20 +30,24 @@ body {
 
 }
 
+.result-condition {
+  display: flex;
+  align-items: center;
+}
+
+.sun-icon {
+  animation: rotate 3s linear infinite;
+  transform-origin: center;
+  margin-left: 1rem;
+  margin-top: auto;
+}
+
 @keyframes rotate {
-  0% {
+  from {
     transform: rotate(0deg);
   }
 
-  100% {
+  to {
     transform: rotate(360deg);
   }
-}
-
-.sun {
-  animation: rotate 10s linear infinite;
-  background-size: cover;
-  width: 100px;
-  /* Adjust the width and height as needed */
-  height: 100px;
 }
