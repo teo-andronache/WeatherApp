@@ -8,7 +8,7 @@ body {
 
 .search-bar-container {
   display: flex;
-  margin-top: 4rem;
+  align-items: center;
 
 }
 

@@ -1,0 +1,8 @@
+.temp-selector {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+  }
