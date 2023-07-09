@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImSun, ImCloud } from 'react-icons/im';
+import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy } from 'react-icons/wi';
 import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
@@ -63,7 +63,7 @@ type SearchResult = {
   windKPH: number;
   humidity: number;
   condition: string;
-
+  localtime: string;
 };
 
 function App() {
@@ -71,14 +71,31 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
-  
+
+  const getIconByCondition = (condition: string) => {
+    if (condition.includes("rain") || condition.includes("Rain") || condition.includes("drizzle")) {
+      return <WiRain className='rain-icon' />;
+    } else if (condition.includes("Sun") || condition.includes("Clear")) {
+      return <WiDaySunny className='sun-icon' />;
+    } else if (condition.includes("Snow") || condition.includes("snow")) {
+      return <WiSnow className='snow-icon' />;
+    } else if (condition.includes("Wind") || condition.includes("wind")) {
+      return <WiWindy className='windy-icon' />;
+    } else if (condition.includes("Thunder") || condition.includes("thunder")) {
+      return <WiThunderstorm className='thunderstorm-icon' />;
+    } else if (condition.includes("Cloud") || condition.includes("cloud") || condition.includes("Overcast")) {
+      return <WiCloudy className='cloudy-icon' />;
+    }
+
+  };
+
   const handleSearch = async (searchTerm: string) => {
     try {
       const apiKey = "17b74a5a5e844ac0b25133450230307";
       const response = await fetch(
         `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchTerm}&aqi=yes`
       );
-      
+
       const data: WeatherData = await response.json();
       const currentTemperatureC = data.current.temp_c;
       const currentTemperatureF = data.current.temp_f;
@@ -86,7 +103,7 @@ function App() {
       const currentWindKPH = data.current.wind_kph;
       const currentHumidity = data.current.humidity;
       const currentCondition = data.current.condition.text;
-
+      const currentLocaltime = data.location.localtime;
       const currentTemperature = selectedUnit === "celsius" ? currentTemperatureC : currentTemperatureF;
 
 
@@ -97,6 +114,7 @@ function App() {
         windKPH: currentWindKPH,
         humidity: currentHumidity,
         condition: currentCondition,
+        localtime: currentLocaltime
       };
 
       setSearchResults([searchResult]);
@@ -107,26 +125,29 @@ function App() {
   };
   const handleUnitChange = (unit: string) => {
     setSelectedUnit(unit);
-    handleSearch(searchTerm); 
+    handleSearch(searchTerm);
   };
-  
+
   return (
     <div className='App'>
       <div className='search-bar-container'>
-        <SearchBar onSearch={handleSearch} /> 
-        <TempButton onUnitChange={handleUnitChange}/>
+        <SearchBar onSearch={handleSearch} />
+        <TempButton onUnitChange={handleUnitChange} />
       </div>
-      
+
       <video src={videoBackground} autoPlay loop muted />
-      
+
       <div className='search-results-container'>
         {searchResults.map((result, index) => (
           <div key={index} className='search-result'>
-            <div className='result-name'>{result.name}</div>
+            <div className='result-name'>{result.name}
+              {" - " + result.localtime.slice(11, 16)}
+            </div>
             <div className='result-temperature'>{result.temperature}°{selectedUnit === "celsius" ? "C" : "F"}</div>            <div className='result-condition'>
               {result.condition}
-              <ImSun className='sun-icon' />
+              {getIconByCondition(result.condition)}
             </div>
+
           </div>
         ))}
       </div>

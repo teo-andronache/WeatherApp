@@ -8,8 +8,8 @@ type SwitchButtonProps = {
 
 const SwitchButton: React.FC<SwitchButtonProps> = ({ onUnitChange }) => {
   const options = [
-    { label: "°C", value: "celsius" },
-    { label: "°F", value: "fahrenheit" },
+    { label: "°C", value: "celsius", selectedBackgroundColor: "#0097e6" },
+    { label: "°F", value: "fahrenheit", selectedBackgroundColor: "#0097e6" }
   ];
 
   const [selectedUnit, setSelectedUnit] = useState("celsius");
@@ -22,6 +22,12 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({ onUnitChange }) => {
   return (
     <div className="temp-selector">
       <SwitchSelector
+        border={0}
+        fontSize={35}
+        fontColor={"#000000"}
+        selectedFontColor={"#000000"}
+        wrapperBorderRadius={5}
+        optionBorderRadius={5}
         options={options}
         onChange={handleUnitChange}
         initialSelectedIndex={selectedUnit === "celsius" ? 0 : 1}
