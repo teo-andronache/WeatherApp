@@ -59,7 +59,8 @@ type WeatherData = {
 
 type SearchResult = {
   name: string;
-  temperature: number;
+  temperatureC: number;
+  temperatureF: number;
   windKPH: number;
   humidity: number;
   condition: string;
@@ -104,13 +105,12 @@ function App() {
       const currentHumidity = data.current.humidity;
       const currentCondition = data.current.condition.text;
       const currentLocaltime = data.location.localtime;
-      const currentTemperature = selectedUnit === "celsius" ? currentTemperatureC : currentTemperatureF;
-
 
 
       const searchResult: SearchResult = {
         name: currentName,
-        temperature: currentTemperature,
+        temperatureC: currentTemperatureC,
+        temperatureF: currentTemperatureF,
         windKPH: currentWindKPH,
         humidity: currentHumidity,
         condition: currentCondition,
@@ -143,7 +143,7 @@ function App() {
             <div className='result-name'>{result.name}
               {" - " + result.localtime.slice(11, 16)}
             </div>
-            <div className='result-temperature'>{result.temperature}°{selectedUnit === "celsius" ? "C" : "F"}</div>            <div className='result-condition'>
+            <div className='result-temperature'>{selectedUnit === "celsius" ? result.temperatureC : result.temperatureF}°{selectedUnit === "celsius" ? "C" : "F"}</div>            <div className='result-condition'>
               {result.condition}
               {getIconByCondition(result.condition)}
             </div>
