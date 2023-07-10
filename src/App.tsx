@@ -136,18 +136,11 @@ type ForecastDay = {
     maxtemp_f: number;
     mintemp_c: number;
     mintemp_f: number;
-    // Add other properties as needed
-  };
-  astro: {
-    sunrise: string;
-    sunset: string;
-    moonrise: string;
-    moonset: string;
-    moon_phase: string;
-    moon_illumination: string;
-    is_moon_up: number;
-    is_sun_up: number;
-    // Add other properties as needed
+    condition: {
+      text: string;
+      icon: string;
+      code: number;
+    };
   };
   hour: {
     time_epoch: number;
@@ -264,10 +257,10 @@ function App() {
             <div className='result-forecast'>
               {result.forecasts && result.forecasts.length > 0 ? (
                 <ul>
-                  {result.forecasts.slice(0, 3).map((forecast, i) => (
+                  {result.forecasts.slice(0, 7).map((forecast, i) => (
                     <li key={i}>
                       <p>{getDayOfWeek(forecast.date)}</p>
-                      <p>Min: {selectedUnit === 'celsius' ? forecast.day.mintemp_c : forecast.day.mintemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} ~ Max: {selectedUnit === 'celsius' ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'}</p>
+                      <p>{selectedUnit === 'celsius' ? forecast.day.mintemp_c : forecast.day.mintemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} ~ {selectedUnit === 'celsius' ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} {getIconByCondition(forecast.day.condition.text)}</p>
                     </li>
                   ))}
                 </ul>

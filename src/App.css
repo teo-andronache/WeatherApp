@@ -14,12 +14,20 @@ body {
 
 .search-results-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   margin-top: 5rem;
-  /* Add margin from the top */
 }
 
+li {
+  margin-bottom: 30px;
+  /* Adjust the value as per your preference */
+}
+
+.result-forecast {
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 .result-name {
   font-weight: bold;
@@ -48,7 +56,26 @@ body {
 .sun-icon {
   animation: rotate 5s linear infinite;
   transform-origin: center;
-  margin-left: 1rem;
+  margin-top: auto;
+}
+
+.snow-icon {
+  margin-top: auto;
+}
+
+.rain-icon {
+  margin-top: auto;
+}
+
+.windy-icon {
+  margin-top: auto;
+}
+
+.thunderstorm-icon {
+  margin-top: auto;
+}
+
+.cloudy-icon {
   margin-top: auto;
 }
 
