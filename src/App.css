@@ -39,6 +39,12 @@ body {
   align-items: center;
 }
 
+.result-forecast {
+  margin-top: 3rem;
+  font-size: medium;
+}
+
+
 .sun-icon {
   animation: rotate 5s linear infinite;
   transform-origin: center;

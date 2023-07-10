@@ -3,10 +3,9 @@ import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy } from 'r
 import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import SwitchSelector from "react-switch-selector";
 import TempButton from './components/SwitchButton';
 
-type WeatherData = {
+type WeatherResponse = {
   location: {
     name: string;
     region: string;
@@ -45,17 +44,119 @@ type WeatherData = {
     uv: number;
     gust_mph: number;
     gust_kph: number;
-    air_quality: {
-      co: number;
-      no2: number;
-      o3: number;
-      so2: number;
-      pm2_5: number;
-      pm10: number;
-    };
   };
-}
+  forecast: {
+    forecastday: {
+      date: string;
+      date_epoch: number;
+      day: {
+        maxtemp_c: number;
+        maxtemp_f: number;
+        mintemp_c: number;
+        mintemp_f: number;
+        avgtemp_c: number;
+        avgtemp_f: number;
+        maxwind_mph: number;
+        maxwind_kph: number;
+        totalprecip_mm: number;
+        totalprecip_in: number;
+        totalsnow_cm: number;
+        avgvis_km: number;
+        avgvis_miles: number;
+        avghumidity: number;
+        daily_will_it_rain: number;
+        daily_chance_of_rain: number;
+        daily_will_it_snow: number;
+        daily_chance_of_snow: number;
+        condition: {
+          text: string;
+          icon: string;
+          code: number;
+        };
+        uv: number;
+      };
+      astro: {
+        sunrise: string;
+        sunset: string;
+        moonrise: string;
+        moonset: string;
+        moon_phase: string;
+        moon_illumination: string;
+        is_moon_up: number;
+        is_sun_up: number;
+      };
+      hour: {
+        time_epoch: number;
+        time: string;
+        temp_c: number;
+        temp_f: number;
+        is_day: number;
+        condition: {
+          text: string;
+          icon: string;
+          code: number;
+        };
+        wind_mph: number;
+        wind_kph: number;
+        wind_degree: number;
+        wind_dir: string;
+        pressure_mb: number;
+        pressure_in: number;
+        precip_mm: number;
+        precip_in: number;
+        humidity: number;
+        cloud: number;
+        feelslike_c: number;
+        feelslike_f: number;
+        windchill_c: number;
+        windchill_f: number;
+        heatindex_c: number;
+        heatindex_f: number;
+        dewpoint_c: number;
+        dewpoint_f: number;
+        will_it_rain: number;
+        chance_of_rain: number;
+        will_it_snow: number;
+        chance_of_snow: number;
+        vis_km: number;
+        vis_miles: number;
+        gust_mph: number;
+        gust_kph: number;
+        uv: number;
+      }[];
+    }[];
+  };
+};
 
+type ForecastDay = {
+  date: string;
+  date_epoch: number;
+  day: {
+    maxtemp_c: number;
+    maxtemp_f: number;
+    mintemp_c: number;
+    mintemp_f: number;
+    // Add other properties as needed
+  };
+  astro: {
+    sunrise: string;
+    sunset: string;
+    moonrise: string;
+    moonset: string;
+    moon_phase: string;
+    moon_illumination: string;
+    is_moon_up: number;
+    is_sun_up: number;
+    // Add other properties as needed
+  };
+  hour: {
+    time_epoch: number;
+    time: string;
+    temp_c: number;
+    temp_f: number;
+    // Add other properties as needed
+  }[];
+};
 
 type SearchResult = {
   name: string;
@@ -65,10 +166,10 @@ type SearchResult = {
   humidity: number;
   condition: string;
   localtime: string;
+  forecasts: ForecastDay[];
 };
 
 function App() {
-  let currentTemperature: number;
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
@@ -90,14 +191,26 @@ function App() {
 
   };
 
+  const getDayOfWeek = (date: string) => {
+    const currentDate = new Date();
+    const day = new Date(date);
+    const dayOfWeek = day.toLocaleDateString("en-US", { weekday: "long" });
+
+    if (day.toDateString() === currentDate.toDateString()) {
+      return "Today";
+    } else {
+      return dayOfWeek;
+    }
+  };
+
+
   const handleSearch = async (searchTerm: string) => {
     try {
       const apiKey = "17b74a5a5e844ac0b25133450230307";
-      const response = await fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${searchTerm}&aqi=yes`
-      );
 
-      const data: WeatherData = await response.json();
+      const forecast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchTerm}&days=3&aqi=no&alerts=no`);
+      const data: WeatherResponse = await forecast.json();
+
       const currentTemperatureC = data.current.temp_c;
       const currentTemperatureF = data.current.temp_f;
       const currentName = data.location.name;
@@ -105,7 +218,7 @@ function App() {
       const currentHumidity = data.current.humidity;
       const currentCondition = data.current.condition.text;
       const currentLocaltime = data.location.localtime;
-
+      const currentForecasts = data.forecast.forecastday;
 
       const searchResult: SearchResult = {
         name: currentName,
@@ -114,7 +227,8 @@ function App() {
         windKPH: currentWindKPH,
         humidity: currentHumidity,
         condition: currentCondition,
-        localtime: currentLocaltime
+        localtime: currentLocaltime,
+        forecasts: currentForecasts,
       };
 
       setSearchResults([searchResult]);
@@ -143,11 +257,24 @@ function App() {
             <div className='result-name'>{result.name}
               {" - " + result.localtime.slice(11, 16)}
             </div>
-            <div className='result-temperature'>{selectedUnit === "celsius" ? result.temperatureC : result.temperatureF}°{selectedUnit === "celsius" ? "C" : "F"}</div>            <div className='result-condition'>
-              {result.condition}
-              {getIconByCondition(result.condition)}
+            <div className='result-temperature'>{selectedUnit === "celsius" ? result.temperatureC : result.temperatureF}°{selectedUnit === "celsius" ? "C" : "F"}</div>
+            <div className='result-condition'>
+              {result.condition}{getIconByCondition(result.condition)}
             </div>
-
+            <div className='result-forecast'>
+              {result.forecasts && result.forecasts.length > 0 ? (
+                <ul>
+                  {result.forecasts.slice(0, 3).map((forecast, i) => (
+                    <li key={i}>
+                      <p>{getDayOfWeek(forecast.date)}</p>
+                      <p>Min: {selectedUnit === 'celsius' ? forecast.day.mintemp_c : forecast.day.mintemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} ~ Max: {selectedUnit === 'celsius' ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No forecast available</p>
+              )}
+            </div>
           </div>
         ))}
       </div>
