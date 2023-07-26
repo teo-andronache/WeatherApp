@@ -1,5 +1,7 @@
 .temp-selector {
-  width: 12%;
+  width: 13%;
+  height: 4%;
+  margin-top: 3px;
   display: flex;
   justify-content: flex-end;
   position: absolute;

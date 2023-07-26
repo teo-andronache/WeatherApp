@@ -12,9 +12,9 @@
   border: 1px solid black;
   /* Add a black border with 1px width */
   padding: 10px;
-  border-radius: 5px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  border-radius: 10px;
+  margin-left: 4rem;
+  margin-right: 4rem;
 }
 
 .search-result-container-empty {
@@ -51,14 +51,18 @@ li {
   font-weight: bold;
   align-items: center;
   font-size: xx-large;
+  border-bottom: 1px solid #000000;
+  /* Add a 1px solid line as the bottom border */
+  padding-bottom: 5px
 }
 
 .result-temperature {
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-size: xx-large;
   text-align: center;
   /* Center the text horizontally */
+
 
 }
 
@@ -66,11 +70,15 @@ li {
   display: flex;
   align-items: center;
   font-size: large;
-  text-align: center;
+  align-items: center;
+  /* Vertically center the content */
+  justify-content: center;
+  /* Horizontally center the content */
+
 }
 
 .result-forecast {
-  margin-top: 1rem;
+  margin-top: 3rem;
   font-size: medium;
   text-align: center;
 
