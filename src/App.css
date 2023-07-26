@@ -1,60 +1,84 @@
-body {
-  overflow: hidden;
-}
-
-.App {
-  background-color: transparent;
-}
-
 .search-bar-container {
   display: flex;
   align-items: center;
 
 }
 
-.search-results-container {
+.search-result-container {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   margin-top: 5rem;
+  border: 1px solid black;
+  /* Add a black border with 1px width */
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
+
+.search-result-container-empty {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-top: 5rem;
+  /* Add a black border with 1px width */
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 
 li {
   margin-bottom: 30px;
-  /* Adjust the value as per your preference */
+  align-items: center;
+  list-style: none;
+  font-size: medium;
+  /* Remove default list-style dots */
 }
 
 .result-forecast {
   display: flex;
   flex-direction: column-reverse;
+  align-items: center;
+  /* Vertically center the content */
+  justify-content: center;
+  /* Horizontally center the content */
 }
 
 .result-name {
   font-weight: bold;
   align-items: center;
-}
-
-.result-localtime {
-  align-items: center;
+  font-size: xx-large;
 }
 
 .result-temperature {
-  margin-top: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: xx-large;
+  text-align: center;
+  /* Center the text horizontally */
+
 }
 
 .result-condition {
   display: flex;
   align-items: center;
+  font-size: large;
+  text-align: center;
 }
 
 .result-forecast {
-  margin-top: 3rem;
+  margin-top: 1rem;
   font-size: medium;
+  text-align: center;
+
 }
 
 
 .sun-icon {
-  animation: rotate 5s linear infinite;
+  animation: rotate 2s alternate-reverse 2;
   transform-origin: center;
   margin-top: auto;
 }

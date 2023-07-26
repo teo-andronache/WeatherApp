@@ -166,6 +166,9 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
+  const hasText = (searchResults) => {
+    return searchResults.some((result) => result.name.trim() !== '');
+  };
 
   const getIconByCondition = (condition: string) => {
     if (condition.includes("rain") || condition.includes("Rain") || condition.includes("drizzle")) {
@@ -242,9 +245,7 @@ function App() {
         <TempButton onUnitChange={handleUnitChange} />
       </div>
 
-      <video src={videoBackground} autoPlay loop muted />
-
-      <div className='search-results-container'>
+      <div className={`${hasText(searchResults) ? 'search-result-container' : 'search-result-container-empty'}`}>
         {searchResults.map((result, index) => (
           <div key={index} className='search-result'>
             <div className='result-name'>{result.name}

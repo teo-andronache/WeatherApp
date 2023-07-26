@@ -23,8 +23,8 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({ onUnitChange }) => {
   return (
     <div className="temp-selector">
       <SwitchSelector
-        border={0}
-        fontSize={35}
+        border={1}
+        fontSize={20}
         fontColor={"#000000"}
         selectedFontColor={"#000000"}
         wrapperBorderRadius={5}

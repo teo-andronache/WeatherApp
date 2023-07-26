@@ -13,12 +13,12 @@
 .SearchBar-input {
     padding: 0.5rem;
     font-size: 1rem;
-    border: none;
+    border-color: #1397de;
     border-radius: 4px;
     margin-right: 10px;
-    color: black;
     text-align: center;
-
+    cursor: pointer;
+    transition: background-color 2s ease;
 }
 
 .SearchBar-button {
@@ -34,4 +34,8 @@
 
 .SearchBar-button:hover {
     background-color: #0056b3;
+}
+
+.SearchBar-input:hover {
+    background-color: #f0f4f8;
 }
