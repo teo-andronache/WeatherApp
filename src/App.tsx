@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy } from 'react-icons/wi';
+import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy, WiHumidity } from 'react-icons/wi';
 import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
@@ -141,6 +141,9 @@ type ForecastDay = {
       icon: string;
       code: number;
     };
+    maxwind_kph: number;
+    avghumidity: number;
+    uv: number;
   };
   hour: {
     time_epoch: number;
@@ -216,6 +219,7 @@ function App() {
       const currentLocaltime = data.location.localtime;
       const currentForecasts = data.forecast.forecastday;
 
+
       const searchResult: SearchResult = {
         name: currentName,
         temperatureC: currentTemperatureC,
@@ -260,8 +264,8 @@ function App() {
                 <ul>
                   {result.forecasts.slice(0, 7).map((forecast, i) => (
                     <li key={i}>
-                      <p>{getDayOfWeek(forecast.date)}</p>
-                      <p>{selectedUnit === 'celsius' ? forecast.day.mintemp_c : forecast.day.mintemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} ~ {selectedUnit === 'celsius' ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}°{selectedUnit === 'celsius' ? 'C' : 'F'} {getIconByCondition(forecast.day.condition.text)}</p>
+
+                      <p>{getDayOfWeek(forecast.date)} : {forecast.day.avghumidity}<WiHumidity className="humidity-icon" /> {getIconByCondition(forecast.day.condition.text)} {selectedUnit === 'celsius' ? forecast.day.mintemp_c : forecast.day.mintemp_f}° ~ {selectedUnit === 'celsius' ? forecast.day.maxtemp_c : forecast.day.maxtemp_f}°</p>
                     </li>
                   ))}
                 </ul>

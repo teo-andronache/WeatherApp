@@ -13,8 +13,8 @@
   /* Add a black border with 1px width */
   padding: 10px;
   border-radius: 10px;
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .search-result-container-empty {
@@ -31,11 +31,10 @@
 
 
 li {
-  margin-bottom: 30px;
-  align-items: center;
+  margin-bottom: 1rem;
+  align-items: LEFT;
   list-style: none;
-  font-size: medium;
-  /* Remove default list-style dots */
+
 }
 
 .result-forecast {
@@ -49,7 +48,7 @@ li {
 
 .result-name {
   font-weight: bold;
-  align-items: center;
+  text-align: center;
   font-size: xx-large;
   border-bottom: 1px solid #000000;
   /* Add a 1px solid line as the bottom border */
@@ -69,8 +68,7 @@ li {
 .result-condition {
   display: flex;
   align-items: center;
-  font-size: large;
-  align-items: center;
+  font-size: larger;
   /* Vertically center the content */
   justify-content: center;
   /* Horizontally center the content */
@@ -79,8 +77,8 @@ li {
 
 .result-forecast {
   margin-top: 3rem;
-  font-size: medium;
-  text-align: center;
+  font-size: large;
+  text-align: left;
 
 }
 
@@ -88,28 +86,23 @@ li {
 .sun-icon {
   animation: rotate 2s alternate-reverse 2;
   transform-origin: center;
-  margin-top: auto;
+  margin-bottom: -0.3rem;
 }
 
-.snow-icon {
-  margin-top: auto;
-}
-
-.rain-icon {
-  margin-top: auto;
-}
-
-.windy-icon {
-  margin-top: auto;
-}
-
+.snow-icon,
+.rain-icon,
+.windy-icon,
+.cloudy-icon,
 .thunderstorm-icon {
-  margin-top: auto;
+  margin-bottom: -0.3rem;
 }
 
-.cloudy-icon {
-  margin-top: auto;
+.humidity-icon {
+  margin-bottom: -0.17rem;
+  margin-left: -0.2rem;
+
 }
+
 
 @keyframes rotate {
   from {
