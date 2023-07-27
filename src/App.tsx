@@ -234,7 +234,6 @@ function App() {
       setSearchResults([searchResult]);
     } catch (error) {
       console.error("Error fetching weather data:", error);
-      // Handle the error (e.g., show an error message)
     }
   };
   const handleUnitChange = (unit: string) => {
