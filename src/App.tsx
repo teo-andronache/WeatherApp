@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy, WiHumidity } from 'react-icons/wi';
-import videoBackground from './assets/video3.mp4';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import TempButton from './components/SwitchButton';
