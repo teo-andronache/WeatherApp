@@ -144,12 +144,22 @@ type ForecastDay = {
     avghumidity: number;
     uv: number;
   };
+  astro: {
+    sunrise: string;
+    sunset: string;
+    moonrise: string;
+    moonset: string;
+    moon_phase: string;
+    moon_illumination: string;
+    is_moon_up: number;
+    is_sun_up: number;
+  },
   hour: {
     time_epoch: number;
     time: string;
     temp_c: number;
     temp_f: number;
-    // Add other properties as needed
+    wind_kph: number;
   }[];
 };
 
@@ -168,6 +178,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
+
+
   const hasText = (searchResults) => {
     return searchResults.some((result) => result.name.trim() !== '');
   };
@@ -218,7 +230,6 @@ function App() {
       const currentLocaltime = data.location.localtime;
       const currentForecasts = data.forecast.forecastday;
 
-
       const searchResult: SearchResult = {
         name: currentName,
         temperatureC: currentTemperatureC,
@@ -235,6 +246,8 @@ function App() {
       console.error("Error fetching weather data:", error);
     }
   };
+
+
   const handleUnitChange = (unit: string) => {
     setSelectedUnit(unit);
     handleSearch(searchTerm);
@@ -271,16 +284,33 @@ function App() {
                 <p>No forecast available</p>
               )}
             </div>
+            <div className='square-container'>
+              <div className='small-square1'>
+                {result.forecasts.length > 0 && (
+                  <p>UV</p>)}
+                <p>{result.forecasts[0].day.uv}/11</p>
+              </div>
+              <div className='small-square2'>Wind
+                <p>{result.windKPH} km/h </p>
+              </div>
+              <div className='small-square3'>
+                {result.forecasts.length > 0 && (
+                  <p>Sunrise</p>)}
+                <p>{result.forecasts[0].astro.sunrise}</p>
+
+              </div>
+              <div className='small-square4'>
+                {result.forecasts.length > 0 && (
+                  <p>Sunset</p>)}
+                <p>{result.forecasts[0].astro.sunset}</p>
+              </div>
+            </div>
+
           </div>
 
         ))}
       </div>
-      <div className='result-uv'>
-        <div className='small-square'></div>
-        <div className='small-square'></div>
-        <div className='small-square'></div>
-        <div className='small-square'></div>
-      </div>
+
     </div>
   );
 

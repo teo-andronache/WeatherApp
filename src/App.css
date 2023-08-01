@@ -1,3 +1,10 @@
+.App {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .search-bar-container {
   display: flex;
   align-items: center;
@@ -103,35 +110,35 @@ li {
 
 }
 
-.result-uv {
+.square-container {
   display: grid;
   align-items: center;
   justify-content: center;
-  /* Horizontally center the container */
   grid-template-columns: repeat(2, 1fr);
-  /* Create 2 columns with equal width */
   grid-template-rows: repeat(2, 1fr);
-  /* Create 2 rows with equal height */
-  gap: 10px;
-  /* Add any desired gap between the squares */
-  width: 200px;
-  /* Adjust the size of the big square as per your preference */
-  height: 200px;
-  /* Adjust the size of the big square as per your preference */
-  background-color: #ccc;
-  /* Add any desired background color for the big square */
+  gap: 1px;
+  width: 370px;
+  height: 140px;
+  background-color: #a4a2a2;
   margin-top: 1rem;
-  /* Add any desired margin */
+  margin-left: 0rem;
+  /* Add this line to remove the outline */
+
 }
 
-.small-square {
-  width: 100%;
-  /* Each smaller square takes 100% of the column width */
+.small-square1,
+.small-square2,
+.small-square3,
+.small-square4 {
+  display: table-row;
+  align-items: center;
+  justify-content: center;
+  /* Optional: Horizontally center the content */
   height: 100%;
-  /* Each smaller square takes 100% of the row height */
-  background-color: #210909;
-  /* Add any desired background color for the smaller squares */
+  background-color: #f4f4f4;
+  text-align: center;
 }
+
 
 @keyframes rotate {
   from {
