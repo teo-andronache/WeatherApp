@@ -272,7 +272,14 @@ function App() {
               )}
             </div>
           </div>
+
         ))}
+      </div>
+      <div className='result-uv'>
+        <div className='small-square'></div>
+        <div className='small-square'></div>
+        <div className='small-square'></div>
+        <div className='small-square'></div>
       </div>
     </div>
   );

@@ -103,6 +103,35 @@ li {
 
 }
 
+.result-uv {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  /* Horizontally center the container */
+  grid-template-columns: repeat(2, 1fr);
+  /* Create 2 columns with equal width */
+  grid-template-rows: repeat(2, 1fr);
+  /* Create 2 rows with equal height */
+  gap: 10px;
+  /* Add any desired gap between the squares */
+  width: 200px;
+  /* Adjust the size of the big square as per your preference */
+  height: 200px;
+  /* Adjust the size of the big square as per your preference */
+  background-color: #ccc;
+  /* Add any desired background color for the big square */
+  margin-top: 1rem;
+  /* Add any desired margin */
+}
+
+.small-square {
+  width: 100%;
+  /* Each smaller square takes 100% of the column width */
+  height: 100%;
+  /* Each smaller square takes 100% of the row height */
+  background-color: #210909;
+  /* Add any desired background color for the smaller squares */
+}
 
 @keyframes rotate {
   from {
