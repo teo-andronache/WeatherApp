@@ -254,13 +254,13 @@ function App() {
 
   const handleUnitChange = (unit: string) => {
     setSelectedUnit(unit);
-    handleSearch(searchTerm);
   };
 
   return (
     <div className={`App ${isBackgroundBlack ? 'black-bg' : 'white-bg'}`}>
-    <BackgroundButton onClick={handleBackgroundChange} />
+
       <div className='search-bar-container'>
+        <BackgroundButton onClick={handleBackgroundChange} />
         <SearchBar onSearch={handleSearch} />
         <TempButton onUnitChange={handleUnitChange} />
       </div>

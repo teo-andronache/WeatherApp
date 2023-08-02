@@ -1,96 +1,97 @@
 .App {
-  display: grid;
-  align-items: center;
-  justify-content: center;
+    margin-top: -0.11rem;
+    margin-left: -0.11rem;
 }
 
-
 .search-bar-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
 }
 
 .search-result-container {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  margin-top: 5rem;
-  border: 1px solid black;
-  /* Add a black border with 1px width */
-  padding: 10px;
-  border-radius: 10px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 5rem;
+    border: 1px solid black;
+    /* Add a black border with 1px width */
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .search-result-container-empty {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  margin-top: 5rem;
-  /* Add a black border with 1px width */
-  padding: 10px;
-  border-radius: 5px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 5rem;
+    /* Add a black border with 1px width */
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 
 li {
-  margin-bottom: 1rem;
-  align-items: LEFT;
-  list-style: none;
+    margin-bottom: 1rem;
+    align-items: LEFT;
+    list-style: none;
 
 }
 
 .result-forecast {
-  margin-top: 3rem;
-  font-size: large;
-  text-align: right;
-  -webkit-text-align: right; /* Safari/Chrome */
-  -moz-text-align: right; /* Firefox */
-  -ms-text-align: right; /* Microsoft Edge */
+    margin-top: 3rem;
+    font-size: large;
+    text-align: right;
+    -webkit-text-align: right;
+    /* Safari/Chrome */
+    -moz-text-align: right;
+    /* Firefox */
+    -ms-text-align: right;
+    /* Microsoft Edge */
 }
 
 .result-name {
-  font-weight: bold;
-  text-align: center;
-  font-size: xx-large;
-  border-bottom: 1px solid #000000;
-  /* Add a 1px solid line as the bottom border */
-  padding-bottom: 5px
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    border-bottom: 1px solid #000000;
+    /* Add a 1px solid line as the bottom border */
+    padding-bottom: 5px
 }
 
 .result-temperature {
-  align-items: center;
-  margin-top: 1.5rem;
-  font-size: xx-large;
-  text-align: center;
-  /* Center the text horizontally */
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: xx-large;
+    text-align: center;
+    /* Center the text horizontally */
 }
 
 .result-condition {
-  display: flex;
-  align-items: center;
-  font-size: larger;
-  /* Vertically center the content */
-  justify-content: center;
-  /* Horizontally center the content */
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    /* Vertically center the content */
+    justify-content: center;
+    /* Horizontally center the content */
 }
 
 .result-forecast {
-  margin-top: 3rem;
-  font-size: large;
-  text-align: left;
-
+    margin-top: 3rem;
+    margin-right: 3rem;
+    font-size: large;
+    text-align: right;
 }
 
 
 .sun-icon {
-  animation: rotate 2s alternate-reverse 2;
-  transform-origin: center;
-  margin-bottom: -0.3rem;
+    animation: rotate 2s alternate-reverse 2;
+    transform-origin: center;
+    margin-bottom: -0.3rem;
 }
 
 .snow-icon,
@@ -98,27 +99,28 @@ li {
 .windy-icon,
 .cloudy-icon,
 .thunderstorm-icon {
-  margin-bottom: -0.3rem;
+    margin-bottom: -0.3rem;
 }
 
 .humidity-icon {
-  margin-bottom: -0.17rem;
-  margin-left: -0.2rem;
+    margin-bottom: -0.17rem;
+    margin-left: -0.2rem;
 
 }
 
 .square-container {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1px;
-  width: 370px;
-  height: 140px;
-  margin-top: 1rem;
-  margin-left: 0rem;
-  /* Add this line to remove the outline */
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+    width: 370px;
+    height: 140px;
+    margin-top: 1rem;
+    margin-left: 0rem;
+
+    /* Add this line to remove the outline */
 
 }
 
@@ -126,79 +128,90 @@ li {
 .small-square2,
 .small-square3,
 .small-square4 {
-  display: table-row;
-  align-items: center;
-  justify-content: center;
-  /* Optional: Horizontally center the content */
-  height: 98%;
-  text-align: center;
+    display: ruby;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    /* Optional: Horizontally center the content */
+    height: 98%;
+    text-align: center;
 }
 
 
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .black-bg {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
-.black-bg .search-result-container,
-.black-bg .search-result-container-empty {
-  border: 1px solid white;
-  color: white;
+.black-bg .search-result-container {
+    border: 1px solid gray;
+    color: white;
 }
 
-.black-bg .search-result-container-empty {
-  border-radius: 5px;
-  color:white;
+
+.black-bg .result-forecast {
+    color: white;
 }
 
-.black-bg .result-forecast{
-  color: white;
+.black-bg .result-name {
+    color: white;
+    border-bottom: 1px solid grey;
+
 }
+
 .black-bg .small-square1,
 .black-bg .small-square2,
 .black-bg .small-square3,
 .black-bg .small-square4 {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
-.black-bg .square-container{
-  background-color: white;
+.black-bg .square-container {
+    background-color: gray;
 }
+
 /* Styles for white background */
 .white-bg {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
-.white-bg .search-result-container,
-.white-bg .search-result-container-empty {
-  border: 1px solid black;
+.white-bg .search-result-container {
+    border: 1px solid black;
 }
 
-.white-bg .search-result-container-empty {
-  border-radius: 5px;
-}
 
 .white-bg .result-forecast,
 .white-bg .small-square1,
 .white-bg .small-square2,
 .white-bg .small-square3,
 .white-bg .small-square4 {
-  color: black;
-  background-color: white;
+    color: black;
+    background-color: white;
 }
 
 .white-bg .square-container {
-  background-color: black;
+    background-color: black;
+}
+
+.black-bg {
+    padding-top: -0.11rem;
+    padding-left: -0.11rem;
+    padding-bottom: 1rem;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    /* Set a lower z-index to place it behind the main content */
 }
