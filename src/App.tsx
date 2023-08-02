@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy, WiHumidity } from 'react-icons/wi';
 import './App.css';
+import BackgroundButton from './components/BackgroundButton';
 import SearchBar from './components/SearchBar';
 import TempButton from './components/SwitchButton';
 
@@ -178,7 +179,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
-
+  const [isBackgroundBlack, setBackgroundBlack] = useState(false);
+  const handleBackgroundChange = () => {
+    setBackgroundBlack((prev) => !prev);
+  };
 
   const hasText = (searchResults) => {
     return searchResults.some((result) => result.name.trim() !== '');
@@ -254,7 +258,8 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className={`App ${isBackgroundBlack ? 'black-bg' : 'white-bg'}`}>
+    <BackgroundButton onClick={handleBackgroundChange} />
       <div className='search-bar-container'>
         <SearchBar onSearch={handleSearch} />
         <TempButton onUnitChange={handleUnitChange} />

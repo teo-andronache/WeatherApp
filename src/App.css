@@ -45,12 +45,12 @@ li {
 }
 
 .result-forecast {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  /* Vertically center the content */
-  justify-content: center;
-  /* Horizontally center the content */
+  margin-top: 3rem;
+  font-size: large;
+  text-align: right;
+  -webkit-text-align: right; /* Safari/Chrome */
+  -moz-text-align: right; /* Firefox */
+  -ms-text-align: right; /* Microsoft Edge */
 }
 
 .result-name {
@@ -68,8 +68,6 @@ li {
   font-size: xx-large;
   text-align: center;
   /* Center the text horizontally */
-
-
 }
 
 .result-condition {
@@ -79,7 +77,6 @@ li {
   /* Vertically center the content */
   justify-content: center;
   /* Horizontally center the content */
-
 }
 
 .result-forecast {
@@ -119,7 +116,6 @@ li {
   gap: 1px;
   width: 370px;
   height: 140px;
-  background-color: #a4a2a2;
   margin-top: 1rem;
   margin-left: 0rem;
   /* Add this line to remove the outline */
@@ -134,8 +130,7 @@ li {
   align-items: center;
   justify-content: center;
   /* Optional: Horizontally center the content */
-  height: 100%;
-  background-color: #f4f4f4;
+  height: 98%;
   text-align: center;
 }
 
@@ -148,4 +143,62 @@ li {
   to {
     transform: rotate(360deg);
   }
+}
+
+.black-bg {
+  background-color: black;
+  color: white;
+}
+
+.black-bg .search-result-container,
+.black-bg .search-result-container-empty {
+  border: 1px solid white;
+  color: white;
+}
+
+.black-bg .search-result-container-empty {
+  border-radius: 5px;
+  color:white;
+}
+
+.black-bg .result-forecast{
+  color: white;
+}
+.black-bg .small-square1,
+.black-bg .small-square2,
+.black-bg .small-square3,
+.black-bg .small-square4 {
+  background-color: black;
+  color: white;
+}
+
+.black-bg .square-container{
+  background-color: white;
+}
+/* Styles for white background */
+.white-bg {
+  background-color: white;
+  color: black;
+}
+
+.white-bg .search-result-container,
+.white-bg .search-result-container-empty {
+  border: 1px solid black;
+}
+
+.white-bg .search-result-container-empty {
+  border-radius: 5px;
+}
+
+.white-bg .result-forecast,
+.white-bg .small-square1,
+.white-bg .small-square2,
+.white-bg .small-square3,
+.white-bg .small-square4 {
+  color: black;
+  background-color: white;
+}
+
+.white-bg .square-container {
+  background-color: black;
 }
