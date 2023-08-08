@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { WiDaySunny, WiThunderstorm, WiCloudy, WiRain, WiSnow, WiWindy, WiHumidity } from 'react-icons/wi';
+import { AiFillHeart } from "react-icons/ai";
 import './App.css';
 import BackgroundButton from './components/BackgroundButton';
 import SearchBar from './components/SearchBar';
@@ -176,7 +177,8 @@ type SearchResult = {
 };
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const storedTerm = localStorage.getItem('lastSearchedTerm') || ''; // Retrieve the stored term
+  const [searchTerm, setSearchTerm] = useState(storedTerm);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [selectedUnit, setSelectedUnit] = useState("celsius");
   const [isBackgroundBlack, setBackgroundBlack] = useState(false);
@@ -234,6 +236,8 @@ function App() {
       const currentLocaltime = data.location.localtime;
       const currentForecasts = data.forecast.forecastday;
 
+      localStorage.setItem('lastSearchedTerm', data.location.name);
+
       const searchResult: SearchResult = {
         name: currentName,
         temperatureC: currentTemperatureC,
@@ -261,7 +265,7 @@ function App() {
 
       <div className='search-bar-container'>
         <BackgroundButton onClick={handleBackgroundChange} />
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} initialTerm={searchTerm} />
         <TempButton onUnitChange={handleUnitChange} />
       </div>
 
@@ -315,7 +319,12 @@ function App() {
 
         ))}
       </div>
-
+      <div className='credits'>
+        Made with &#8203;<AiFillHeart className='heart-icon' />&#8203; by
+        <p className='authors'>
+          Teodor & Andrei
+        </p>
+      </div>
     </div>
   );
 

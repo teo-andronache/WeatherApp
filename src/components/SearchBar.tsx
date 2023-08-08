@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 /* Duplicate code. */
 type SearchBarProps = {
+    initialTerm?: string; // Add initialTerm prop
     onSearch: (searchTerm: string) => void;
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-    const [searchTerm, setSearchTerm] = useState("");
+const SearchBar: React.FC<SearchBarProps> = ({ initialTerm = "Galati", onSearch }) => {
+    const [searchTerm, setSearchTerm] = useState(initialTerm);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -14,12 +15,21 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
     const handleSearch = () => {
         onSearch(searchTerm);
+
     };
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
-          handleSearch();
+            handleSearch();
         }
-      };
+    };
+
+    useEffect(() => {
+        const lastSearchedTerm = localStorage.getItem("lastSearchedTerm");
+        if (lastSearchedTerm) {
+            setSearchTerm(lastSearchedTerm);
+            onSearch(lastSearchedTerm); // Trigger the API call again
+        }
+    }, []);
 
     return (
         <div className="SearchBar-container">
@@ -28,7 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                 type="text"
                 value={searchTerm}
                 onChange={handleInputChange}
-                onKeyPress = {handleKeyPress}
+                onKeyPress={handleKeyPress}
             />
             <button className="SearchBar-button" onClick={handleSearch}>
                 Search
