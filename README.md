@@ -8,7 +8,7 @@ A weather web app built using React and Typescript that shows the weather for th
 </figure>
 
 <figure style="margin: 0 10px; text-align: center;">
-    <img src="src/assets/AppPreview.png" width="250" height="400">
+    <img src="src/assets/AppPreviewDefault.png" width="250" height="400">
         <figcaption>Light mode using Celsius</figcaption>
 </figure>
 
