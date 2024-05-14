@@ -1,20 +1,18 @@
 # WeatherApp
-A weather web app built using React and Typescript that shows the weather for the upcoming 3 days, along with other metrics such as UV, windspeed and more.
+A weather web app built using React and Typescript that shows the weather for the upcoming 3 days, along with other metrics such as UV, windspeed and more. The app alows the user to choose between Celsius and Fahrenheit and between Dark and Light themes.
+
 <div style="display: flex; justify-content: center;">
 
 <figure style="margin: 0 10px; text-align: center;">
     <img src="src/assets/AppPreviewDarkCelsius.png" width="250" height="400">
-        <figcaption>Dark mode using Celius</figcaption>
 </figure>
 
 <figure style="margin: 0 10px; text-align: center;">
     <img src="src/assets/AppPreviewDefault.png" width="250" height="400">
-        <figcaption>Light mode using Celsius</figcaption>
 </figure>
 
 <figure style="margin: 0 10px; text-align: center;">
     <img src="src/assets/AppPreviewDarkFahrenheit.png" width="250" height="400">
-        <figcaption>Dark mode using Fahrenheit</figcaption>
 </figure>
 
 </div>
