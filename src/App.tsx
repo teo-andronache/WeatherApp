@@ -6,6 +6,7 @@ import BackgroundButton from './components/BackgroundButton';
 import SearchBar from './components/SearchBar';
 import TempButton from './components/SwitchButton';
 
+
 type WeatherResponse = {
   location: {
     name: string;
@@ -222,9 +223,8 @@ function App() {
 
   const handleSearch = async (searchTerm: string) => {
     try {
-      const apiKey = "17b74a5a5e844ac0b25133450230307";
-
-      const forecast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchTerm}&days=3&aqi=no&alerts=no`);
+      const freeApiKey = "17b74a5a5e844ac0b25133450230307";
+      const forecast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${freeApiKey}&q=${searchTerm}&days=3&aqi=no&alerts=no`);
       const data: WeatherResponse = await forecast.json();
 
       const currentTemperatureC = data.current.temp_c;
@@ -322,7 +322,7 @@ function App() {
       <div className='credits'>
         Made with &#8203;<AiFillHeart className='heart-icon' />&#8203; by
         <p className='authors'>
-          Teodor & Andrei
+          Teodor
         </p>
       </div>
     </div>
