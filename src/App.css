@@ -1,45 +1,287 @@
-#root {
-  max-width: 2000px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App {
+    margin-top: -0.11rem;
+    margin-left: -0.11rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.search-bar-container {
+    display: flex;
+    align-items: center;
+
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.search-result-container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 5rem;
+    border: 1px solid black;
+    /* Add a black border with 1px width */
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.search-result-container-empty {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 5rem;
+    /* Add a black border with 1px width */
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
+li {
+    margin-bottom: 1rem;
+    align-items: LEFT;
+    list-style: none;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.result-forecast {
+    margin-top: 3rem;
+    font-size: large;
+    text-align: right;
+    -webkit-text-align: right;
+    /* Safari/Chrome */
+    -moz-text-align: right;
+    /* Firefox */
+    -ms-text-align: right;
+    /* Microsoft Edge */
 }
 
-.card {
-  padding: 2em;
+.result-name {
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    border-bottom: 1px solid #000000;
+    /* Add a 1px solid line as the bottom border */
+    padding-bottom: 5px
 }
 
-.read-the-docs {
-  color: #888;
+.result-temperature {
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: xx-large;
+    text-align: center;
+    /* Center the text horizontally */
+}
+
+.result-condition {
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    /* Vertically center the content */
+    justify-content: center;
+    /* Horizontally center the content */
+}
+
+.result-forecast {
+    margin-top: 3rem;
+    margin-right: 3rem;
+    font-size: large;
+    text-align: right;
+}
+
+
+.sun-icon {
+    animation: rotate 2s alternate-reverse 2;
+    transform-origin: center;
+    margin-bottom: -0.3rem;
+    color: rgb(210, 154, 58);
+}
+
+.snow-icon,
+.rain-icon,
+.windy-icon,
+.cloudy-icon,
+.thunderstorm-icon {
+    margin-bottom: -0.3rem;
+    color: rgb(65, 80, 115);
+}
+
+.humidity-icon {
+    margin-bottom: -0.17rem;
+    margin-left: -0.2rem;
+    color: rgb(38, 69, 149);
+}
+
+.square-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+    width: 370px;
+    height: 140px;
+    margin-top: 1rem;
+    margin-left: 0rem;
+
+    /* Add this line to remove the outline */
+
+}
+
+.small-square1,
+.small-square2,
+.small-square3,
+.small-square4 {
+    display: ruby;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    /* Optional: Horizontally center the content */
+    height: 98%;
+    text-align: center;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.black-bg {
+    background-color: black;
+    color: white;
+    transition: 0.5s linear;
+
+}
+
+.black-bg .search-result-container {
+    border: 1px solid gray;
+    color: white;
+    background-color: #000000;
+}
+
+
+.black-bg .result-forecast {
+    color: white;
+}
+
+.black-bg .result-name {
+    color: white;
+    border-bottom: 1px solid grey;
+
+}
+
+.black-bg .small-square1,
+.black-bg .small-square2,
+.black-bg .small-square3,
+.black-bg .small-square4 {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+
+}
+
+.black-bg .square-container {
+    background-color: gray;
+    border-radius: 5px;
+
+}
+
+/* Styles for white background */
+.white-bg {
+    background-color: white;
+    color: black;
+}
+
+.white-bg .search-result-container {
+    border: 1px solid black;
+}
+
+
+.white-bg .result-forecast,
+.white-bg .small-square1,
+.white-bg .small-square2,
+.white-bg .small-square3,
+.white-bg .small-square4 {
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.white-bg .square-container {
+    background-color: rgb(81, 80, 80);
+    border-radius: 5px;
+
+}
+
+.black-bg {
+    padding-top: -0.11rem;
+    padding-left: -0.11rem;
+    padding-bottom: 1rem;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    /* Set a lower z-index to place it behind the main content */
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.credits {
+    align-items: center;
+    text-align: center;
+    padding-top: 5rem;
+    font-size: 1rem;
+    /* Adjust the value as needed */
+
+}
+
+.heart-icon {
+    color: red;
+    animation: heartbeat 2s infinite;
+}
+
+.authors {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: rainbowAnimation 2s infinite;
+}
+
+@keyframes rainbowAnimation {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        filter: hue-rotate(90deg);
+    }
+
+    50% {
+        filter: hue-rotate(180deg);
+    }
+
+    75% {
+        filter: hue-rotate(270deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
 }

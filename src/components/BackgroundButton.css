@@ -1,0 +1,9 @@
+.theme-selector {
+    z-index: 2;
+    margin-top: 0.5rem;
+    left: 1rem;
+}
+
+p {
+    font-size: medium;
+}
