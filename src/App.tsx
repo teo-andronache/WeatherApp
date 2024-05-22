@@ -223,7 +223,7 @@ function App() {
 
   const handleSearch = async (searchTerm: string) => {
     try {
-      const freeApiKey = "17b74a5a5e844ac0b25133450230307";
+      const freeApiKey = "";
       const forecast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${freeApiKey}&q=${searchTerm}&days=3&aqi=no&alerts=no`);
       const data: WeatherResponse = await forecast.json();
 
